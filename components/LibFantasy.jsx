@@ -7,10 +7,10 @@ import BooksFantasy from '../src/assets/fantasy.json'
 import { Col } from 'react-bootstrap';
 function LibFantasy(){
 return (
- BooksFantasy.slice(0,5).map((book)=>{
+ BooksFantasy.slice(0,5).map((book, i)=>{
     return(
     <>
-     <Col className='col-2'>
+     <Col key={book.asin +i} className='col-2'>
       <Card className="bg-dark text-white h-100 text-center d-flex justify-content-center">
       <Card.Img src={book.img} alt="Card image" className='opacity-50' />
       <Card.ImgOverlay className='m-3'>
