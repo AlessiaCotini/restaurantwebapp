@@ -1,21 +1,28 @@
 import Card from 'react-bootstrap/Card';
-
-
+import Books from '../src/assets/romance.json'
+// import BooksFantasy from '../src/assets/fantasy.json'
+// import BooksHorror from '../src/assets/horror.json'
+// import BooksHistory from '../src/assets/history.json'
+// import BooksScifi from '../src/assets/scifi.json'
+import { Col } from 'react-bootstrap';
 function LibAllTheBooks(){
 return (
-    <>
-      <Card className="bg-dark text-white">
-      <Card.Img src="" alt="Card image" />
-      <Card.ImgOverlay>
-        <Card.Title>Card title</Card.Title>
+ Books.map((book)=>{
+    return(
+     <Col className='col-2'>
+      <Card className="bg-dark text-white h-100 text-center m-3">
+      <Card.Img src={book.img} alt="Card image" className='opacity-50' />
+      <Card.ImgOverlay className='m-3'>
+        <Card.Title>{book.title}</Card.Title>
         <Card.Text>
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
+          {book.category}
         </Card.Text>
-        <Card.Text>Last updated 3 mins ago</Card.Text>
+        <Card.Text>{book.price}$</Card.Text>
       </Card.ImgOverlay>
     </Card>
-    </>
+    </Col> 
+    )
+ })
 )
 }
 export default LibAllTheBooks

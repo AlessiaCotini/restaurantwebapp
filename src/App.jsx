@@ -7,7 +7,7 @@ import LibFooter from '../components/LibFooter'
 import LibWelcome from '../components/LibWelcome'
 import LibNavbar from '../components/LibNavbar'
 import LibAllTheBooks from '../components/LibAllTheBooks'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 function App() {
 
   return (
@@ -17,11 +17,9 @@ function App() {
     </header>
     <main className='flex-grow-1'>
     <LibWelcome />
-    <Container> 
+    <Container fluid> 
      <Row>
-      <Col className='col-4'>
        <LibAllTheBooks />
-      </Col>
      </Row>
     </Container>
     </main>
