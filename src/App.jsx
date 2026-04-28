@@ -7,6 +7,10 @@ import LibFooter from '../components/LibFooter'
 import LibWelcome from '../components/LibWelcome'
 import LibNavbar from '../components/LibNavbar'
 import LibAllTheBooks from '../components/LibAllTheBooks'
+import LibFantasy from '../components/LibFantasy'
+import LibScify from '../components/LibScify'
+import LibHistory from '../components/LibHistory'
+import LibHorror from '../components/LibHorror'
 import { Container, Row } from 'react-bootstrap'
 function App() {
 
@@ -15,11 +19,20 @@ function App() {
     <header>
     <LibNavbar />
     </header>
-    <main className='flex-grow-1'>
+    <main className='flex-grow-1 m-3'>
     <LibWelcome />
     <Container fluid> 
      <Row className='gap-5'>
+      <h3 className='text-center'>Romance</h3>
        <LibAllTheBooks />
+      <h3 className='text-center'>Fantasy</h3>
+      <LibFantasy />
+      <h3 className='text-center'>Hystory</h3>
+      <LibHistory />
+      <h3 className='text-center'>Horror</h3>
+      <LibHorror />
+      <h3 className='text-center'>Scify</h3>
+      <LibScify />
      </Row>
     </Container>
     </main>
