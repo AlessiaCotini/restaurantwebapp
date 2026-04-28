@@ -5,9 +5,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function LibNavbar () {
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Le letture del sognatore</Navbar.Brand>
+      <Navbar expand="lg" className="bg-body-tertiary p-0" >
+      <Container fluid style={{backgroundColor:'#1e5a05d0'}}>
+        <Navbar.Brand href="#home">Letture del sognatore</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

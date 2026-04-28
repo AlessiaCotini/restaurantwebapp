@@ -4,22 +4,24 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 //graffe FONDAMENTALI perchè NON SONO DI DEFAULT
 //i componenti che dichiariamo noi saranno UNO per file quindi li si possono esportare come default quindi importre senza graffe
 import LibFooter from '../components/LibFooter'
-import LibHomepage from '../components/LibHomepage'
+import LibWelcome from '../components/LibWelcome'
 import LibNavbar from '../components/LibNavbar'
+import LibAllTheBooks from '../components/LibAllTheBooks'
 function App() {
 
   return (
-    <>
+    <div className='d-flex flex-column min-vh-100'>
     <header>
     <LibNavbar />
     </header>
-    <main>
-    <LibHomepage />
+    <main className='flex-grow-1'>
+    <LibWelcome />
+    <LibAllTheBooks />
     </main>
     <footer>
     <LibFooter />
     </footer>
-    </>
+    </div>
   )
 }
 
