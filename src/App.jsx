@@ -19,10 +19,10 @@ function App() {
     <header>
     <LibNavbar />
     </header>
-    <main className='flex-grow-1 m-3'>
+    <main className='flex-grow-1 m-2'>
     <LibWelcome />
     <Container fluid> 
-     <Row className='gap-5'>
+     <Row className='d-flex justify-content-around'>
       <h3 className='text-center'>Romance</h3>
        <LibAllTheBooks />
       <h3 className='text-center'>Fantasy</h3>
