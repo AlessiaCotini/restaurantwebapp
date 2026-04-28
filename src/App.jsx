@@ -18,7 +18,7 @@ function App() {
     <main className='flex-grow-1'>
     <LibWelcome />
     <Container fluid> 
-     <Row>
+     <Row className='gap-5'>
        <LibAllTheBooks />
      </Row>
     </Container>

@@ -7,10 +7,11 @@ import Books from '../src/assets/romance.json'
 import { Col } from 'react-bootstrap';
 function LibAllTheBooks(){
 return (
+
  Books.map((book)=>{
     return(
      <Col className='col-2'>
-      <Card className="bg-dark text-white h-100 text-center m-3">
+      <Card className="bg-dark text-white h-100 text-center d-flex justify-content-center">
       <Card.Img src={book.img} alt="Card image" className='opacity-50' />
       <Card.ImgOverlay className='m-3'>
         <Card.Title>{book.title}</Card.Title>
