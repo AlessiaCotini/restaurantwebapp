@@ -23,11 +23,11 @@ function App() {
     <LibWelcome />
     <Container fluid> 
      <Row className='d-flex justify-content-around'>
-      <h3 className='text-center'>Romance</h3>
+      <h3 className='text-center'>Romanzi</h3>
        <LibAllTheBooks />
       <h3 className='text-center'>Fantasy</h3>
       <LibFantasy />
-      <h3 className='text-center'>Hystory</h3>
+      <h3 className='text-center'>Storici</h3>
       <LibHistory />
       <h3 className='text-center'>Horror</h3>
       <LibHorror />
