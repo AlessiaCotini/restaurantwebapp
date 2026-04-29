@@ -42,6 +42,18 @@ state={
                        }).then((res)=>{
                         if (res.ok){
                             alert('prenotazione salvata')
+                            this.setState({
+                                prenotazioni: {
+      
+                                 name:'',
+                                 phone:'',
+                                 numberOfPeople: '',
+                                 checkbox: false,
+                                 orario: '',
+                                 richieste:''
+                        //riporto il form allo stato iniziale dopo averlo inviato
+                               }
+                            })
                         } else {throw new Error(res.status)}
                        })
                        .catch((err)=>{
