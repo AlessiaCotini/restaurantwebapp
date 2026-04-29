@@ -12,6 +12,7 @@ import LibScify from '../components/LibScify'
 import LibHistory from '../components/LibHistory'
 import LibHorror from '../components/LibHorror'
 import { Container, Row } from 'react-bootstrap'
+import Bookatable from '../components/Bookatable'
 function App() {
 
   return (
@@ -20,6 +21,7 @@ function App() {
     <LibNavbar />
     </header>
     <main className='flex-grow-1 m-2'>
+      <Bookatable />
     <LibWelcome />
     <Container fluid> 
      <Row className='d-flex justify-content-around'>
