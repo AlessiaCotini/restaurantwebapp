@@ -7,7 +7,7 @@ import { Container, Row, Col } from "react-bootstrap"
 //oggetto prenotazione: COSA CI SERVE?
 //NAME, PHONE, NUMBER OF PEOPLE, SMOKING, TIME, REQUESTS(non required)
 //
-
+const link = 'https://striveschool-api.herokuapp.com/api/reservation'
 class Bookatable extends Component {
 
 state={
@@ -33,7 +33,7 @@ state={
                 <Form onSubmit={(e)=>{
                     e.preventDefault()
                     //infiliamoci i dati
-                    fetch(API,{
+                    fetch(link ,{
                         method: 'POST',
                         body : JSON.stringify(this.state.prenotazioni),
                         headers: {
