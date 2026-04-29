@@ -3,12 +3,19 @@ import { Card, ListGroup, Col } from "react-bootstrap";
 
 class SingleBook extends Component {
   state = {
-    selected: true,
+    selected: false,
   };
   render() {
     return (
       <Col xs={12} md={6} lg={4}>
-        <Card>
+        <Card
+          onClick={() => {
+            this.setState({
+              selected: !this.state.selected,
+            });
+          }}
+          style={{ border: this.state.selected ? "3px solid green" : "none" }}
+        >
           <Card.Img variant="top" src={this.props.book.img} />
           <Card.Body>
             <Card.Title>{this.props.book.title}</Card.Title>
