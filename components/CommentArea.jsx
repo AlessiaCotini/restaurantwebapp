@@ -1,5 +1,6 @@
 import { Component } from "react";
-import { Container, Row, Col, ListGroup } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import CommentList from "./CommentList";
 
 const link = "https://striveschool-api.herokuapp.com/api/comments/";
 class CommentArea extends Component {
@@ -37,21 +38,13 @@ class CommentArea extends Component {
     return (
       <Container>
         <Row>
-          <Col>
-            <h3>Commenti degli utenti</h3>
+          <Col className="text-center">
+            <h4 className="text-warning">Commenti degli utenti</h4>
           </Col>
         </Row>
         <Row className="justify-content-center">
           <Col xs={12} lg={6}>
-            <ListGroup>
-              {this.state.comment.slice(0, 3).map((comment) => {
-                return (
-                  <ListGroup.Item key={comment._id}>
-                    <strong>{comment.author}</strong> - {comment.comment}
-                  </ListGroup.Item>
-                );
-              })}
-            </ListGroup>
+            <CommentList arrayCommenti={this.state.comment} />
           </Col>
         </Row>
       </Container>

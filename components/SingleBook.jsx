@@ -8,25 +8,36 @@ class SingleBook extends Component {
   };
   render() {
     return (
-      <Col xs={12} md={6} lg={4}>
+      <Col xs={6} md={4} lg={3}>
         <Card
+          className=" fs-5 text-capitalize text-center text-primary d-flex justify-content-between"
           onClick={() => {
             this.setState({
               selected: !this.state.selected,
             });
           }}
-          style={{ border: this.state.selected ? "3px solid green" : "none" }}
+          style={{ border: this.state.selected ? "1px solid black" : "none" }}
         >
-          <Card.Img variant="top" src={this.props.book.img} />
+          <Card.Img
+            style={{ height: "400px", objectFit: "cover", borderRadius: "1em" }}
+            variant="top"
+            src={this.props.book.img}
+          />
           <Card.Body>
-            <Card.Title>{this.props.book.title}</Card.Title>
-            <Card.Text>{this.props.book.category}</Card.Text>
+            <Card.Title className="text-dark">
+              {this.props.book.title}
+            </Card.Title>
+            <Card.Text className="text-warning">
+              {this.props.book.category}
+            </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
             <ListGroup.Item>{this.props.book.price}$</ListGroup.Item>
           </ListGroup>
           <Card.Body>
-            <Card.Link>Leggi qui i commenti dei lettori</Card.Link>
+            <Card.Link className="text-dark">
+              Leggi qui i commenti dei lettori
+            </Card.Link>
           </Card.Body>
         </Card>
         {this.state.selected && <CommentArea asin={this.props.book.asin} />}
