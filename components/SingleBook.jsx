@@ -10,7 +10,7 @@ class SingleBook extends Component {
     return (
       <Col xs={6} md={4} lg={3}>
         <Card
-          className=" fs-5 text-capitalize text-center text-primary d-flex justify-content-between"
+          className=" fs-5 text-capitalize text-center text-primary d-flex justify-content-around"
           onClick={() => {
             this.setState({
               selected: !this.state.selected,
