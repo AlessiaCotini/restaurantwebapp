@@ -37,14 +37,14 @@ class CommentArea extends Component {
   }
   render() {
     return (
-      <Container>
+      <Container fluid className=" mt-1 border border-1 border-dark rounded-2">
         <Row>
           <Col className="text-center">
             <h4 className="text-warning">Commenti degli utenti</h4>
           </Col>
         </Row>
-        <Row className="justify-content-center">
-          <Col xs={12} lg={6}>
+        <Row>
+          <Col className="col-12">
             <CommentList arrayCommenti={this.state.comment} />
             <AddComment asin={this.props.asin} />
           </Col>

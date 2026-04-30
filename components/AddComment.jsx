@@ -73,7 +73,7 @@ class AddComment extends Component {
           <option value="4">4 - Gradimento alto</option>
           <option value="5">5 - Eccellente</option>
         </select>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-warning mb-2">
           Invia
         </button>
       </form>
