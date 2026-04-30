@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CommentList from "./CommentList";
+import AddComment from "./AddComment";
 
 const link = "https://striveschool-api.herokuapp.com/api/comments/";
 class CommentArea extends Component {
@@ -45,6 +46,7 @@ class CommentArea extends Component {
         <Row className="justify-content-center">
           <Col xs={12} lg={6}>
             <CommentList arrayCommenti={this.state.comment} />
+            <AddComment asin={this.props.asin} />
           </Col>
         </Row>
       </Container>
