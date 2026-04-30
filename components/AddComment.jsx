@@ -35,7 +35,7 @@ class AddComment extends Component {
             adding: { comment: "", rate: "1" },
           });
         } else {
-          throw new Error("Errore 400: Dati non validi");
+          throw new Error("Dati non validi");
         }
       })
       .catch((err) => {
