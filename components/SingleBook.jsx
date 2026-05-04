@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Card, ListGroup, Col } from "react-bootstrap";
-import CommentArea from "./CommentArea";
+// import CommentArea from "./CommentArea";
 
 class SingleBook extends Component {
   state = {
@@ -15,8 +15,14 @@ class SingleBook extends Component {
             this.setState({
               selected: !this.state.selected,
             });
+            this.props.changeAsin(this.props.book.asin);
           }}
-          style={{ border: this.state.selected ? "1px solid black" : "none" }}
+          style={{
+            border:
+              this.props.selectedAsin === this.props.book.asin
+                ? "3px solid red"
+                : "1px solid #ddd",
+          }}
         >
           <Card.Img
             style={{ height: "400px", objectFit: "cover", borderRadius: "1em" }}
@@ -34,13 +40,7 @@ class SingleBook extends Component {
           <ListGroup className="list-group-flush">
             <ListGroup.Item>{this.props.book.price}$</ListGroup.Item>
           </ListGroup>
-          <Card.Body>
-            <Card.Link className="text-dark">
-              Leggi qui i commenti dei lettori
-            </Card.Link>
-          </Card.Body>
         </Card>
-        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
       </Col>
     );
   }

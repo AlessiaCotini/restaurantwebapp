@@ -8,6 +8,8 @@ import LibWelcome from "../components/LibWelcome";
 import LibNavbar from "../components/LibNavbar";
 import { Container, Row } from "react-bootstrap";
 import SearchBook from "../components/SearchBook";
+import CommentArea from "../components/CommentArea";
+import { Component } from "react";
 // import Bookatable from "../components/Bookatable";
 // import Backoffice from "../components/Backoffice";
 
@@ -17,27 +19,39 @@ import SearchBook from "../components/SearchBook";
 // import LibHistory from '../components/LibHistory'
 // import LibHorror from '../components/LibHorror'
 // import Bookatable from '../components/Bookatable'
-function App() {
-  return (
-    <div className="d-flex flex-column min-vh-100">
-      <header>
-        <LibNavbar />
-        {/* <Bookatable /> */}
-        {/* <Backoffice /> */}
-      </header>
-      <main className="flex-grow-1 m-2">
-        <LibWelcome />
-        <Container fluid>
-          <Row>
-            <SearchBook />
-          </Row>
-        </Container>
-      </main>
-      <footer>
-        <LibFooter />
-      </footer>
-    </div>
-  );
+class App extends Component {
+  state = {
+    selected: null,
+  };
+  getCommentArea = (newBook) => {
+    this.setState({
+      selected: newBook,
+    });
+  };
+
+  render() {
+    return (
+      <div className="d-flex flex-column min-vh-100">
+        <header>
+          <LibNavbar />
+          {/* <Bookatable /> */}
+          {/* <Backoffice /> */}
+        </header>
+        <main className="flex-grow-1 m-2">
+          <LibWelcome />
+          <Container fluid>
+            <Row>
+              <SearchBook changeAsin={this.getCommentArea} />
+              <CommentArea asin={this.state.selected} />
+            </Row>
+          </Container>
+        </main>
+        <footer>
+          <LibFooter />
+        </footer>
+      </div>
+    );
+  }
 }
 
 export default App;

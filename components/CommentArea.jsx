@@ -9,6 +9,7 @@ class CommentArea extends Component {
     comment: [],
   };
   getComment = () => {
+    if (!this.props.asin) return;
     fetch(link + this.props.asin, {
       headers: {
         Authorization:
@@ -35,21 +36,41 @@ class CommentArea extends Component {
   componentDidMount() {
     this.getComment();
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.asin !== this.props.asin) {
+      this.getComment();
+    }
+  }
   render() {
+    if (!this.props.asin) {
+      return (
+        <Col xs={6}>
+          <div className="alert alert-info">
+            Seleziona un libro per visualizzare i commenti
+          </div>
+        </Col>
+      );
+    }
     return (
-      <Container fluid className=" mt-1 border border-1 border-dark rounded-2">
-        <Row>
-          <Col className="text-center">
-            <h4 className="text-warning">Commenti degli utenti</h4>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="col-12">
-            <CommentList arrayCommenti={this.state.comment} />
-            <AddComment asin={this.props.asin} />
-          </Col>
-        </Row>
-      </Container>
+      <Col xs={6}>
+        <Container
+          fluid
+          className=" mt-1 border border-1 border-dark rounded-2"
+        >
+          <Row>
+            <Col className="text-center">
+              <h4 className="text-warning">Commenti degli utenti</h4>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="col-12">
+              <CommentList arrayCommenti={this.state.comment} />
+              <AddComment asin={this.props.asin} />
+            </Col>
+          </Row>
+        </Container>
+      </Col>
     );
   }
 }

@@ -1,14 +1,14 @@
 import SingleBook from "./SingleBook";
-import Books from "../src/assets/romance.json";
+// import Books from "../src/assets/romance.json";
 import Form from "react-bootstrap/Form";
 import { Component } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 // import BooksFantasy from '../src/assets/fantasy.json'
 // import BooksHorror from '../src/assets/horror.json'
 // import BooksHistory from '../src/assets/history.json'
-// import BooksScifi from '../src/assets/scifi.json'
+import BooksScifi from "../src/assets/scifi.json";
 // import SearchBook from './SearchBook';
-console.log(Books);
+
 class SearchBook extends Component {
   state = {
     ricerca: "",
@@ -37,12 +37,17 @@ class SearchBook extends Component {
         </div>
         <Container fluid>
           <Row>
-            {Books.filter((book) =>
+            {BooksScifi.filter((book) =>
               book.title
                 .toLowerCase()
                 .includes(this.state.ricerca.toLowerCase()),
             ).map((aBook) => (
-              <SingleBook key={aBook.asin} book={aBook} />
+              <SingleBook
+                key={aBook.asin}
+                book={aBook}
+                changeAsin={this.props.changeAsin}
+                selectedAsin={this.props.selectedAsin}
+              />
             ))}
           </Row>
         </Container>
