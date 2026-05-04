@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Card, ListGroup, Col } from "react-bootstrap";
-// import CommentArea from "./CommentArea";
+import CommentArea from "./CommentArea";
 
 class SingleBook extends Component {
   state = {
@@ -40,10 +40,9 @@ class SingleBook extends Component {
             </Card.Link>
           </Card.Body>
         </Card>
-        {this.state.selected}
+        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
       </Col>
     );
   }
 }
 export default SingleBook;
-// && <CommentArea asin={this.props.book.asin} />
