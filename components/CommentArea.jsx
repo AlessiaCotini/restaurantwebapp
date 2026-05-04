@@ -53,24 +53,65 @@ class CommentArea extends Component {
       );
     }
     return (
+      // <Col
+      //   xs={6}
+      //   className="sticky-top align-self-start"
+      //   style={{ top: "20px", height: "fit-content" }}
+      // >
+      //   <Container
+      //     fluid
+      //     className=" mt-1 border border-1 border-dark rounded-2"
+      //   >
+      //     <Row>
+      //       <Col className="text-center">
+      //         <h4 className="text-warning">Commenti degli utenti</h4>
+      //       </Col>
+      //     </Row>
+      //     <Row>
+      //       <Col className="col-12">
+      //         <CommentList arrayCommenti={this.state.comment} />
+      //         <AddComment asin={this.props.asin} />
+      //       </Col>
+      //     </Row>
+      //   </Container>
+      // </Col>
       <Col
         xs={6}
-        className="sticky-top align-self-start"
+        className="sticky-top align-self-start py-2"
         style={{ top: "20px", height: "fit-content" }}
       >
         <Container
           fluid
-          className=" mt-1 border border-1 border-dark rounded-2"
+          className="p-4 bg-white shadow-sm border border-light-subtle rounded-3"
+          style={{ minHeight: "200px" }}
         >
-          <Row>
-            <Col className="text-center">
-              <h4 className="text-warning">Commenti degli utenti</h4>
+          <Row className="mb-4">
+            <Col className="text-center border-bottom pb-2">
+              <h5
+                className="text-primary fw-bold text-uppercase mb-0"
+                style={{ letterSpacing: "1px" }}
+              >
+                Commenti degli utenti
+              </h5>
             </Col>
           </Row>
+
           <Row>
-            <Col className="col-12">
-              <CommentList arrayCommenti={this.state.comment} />
-              <AddComment asin={this.props.asin} />
+            <Col className="col-12 px-0">
+              <div
+                style={{
+                  maxHeight: "60vh",
+                  overflowY: "auto",
+                  overflowX: "hidden",
+                }}
+                className="mb-3"
+              >
+                <CommentList arrayCommenti={this.state.comment} />
+              </div>
+              <hr className="my-4 opacity-25" />
+              <div className="bg-light p-3 rounded-3">
+                <AddComment asin={this.props.asin} />
+              </div>
             </Col>
           </Row>
         </Container>

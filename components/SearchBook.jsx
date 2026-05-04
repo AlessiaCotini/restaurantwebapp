@@ -41,14 +41,16 @@ class SearchBook extends Component {
               book.title
                 .toLowerCase()
                 .includes(this.state.ricerca.toLowerCase()),
-            ).map((aBook) => (
-              <SingleBook
-                key={aBook.asin}
-                book={aBook}
-                changeAsin={this.props.changeAsin}
-                selectedAsin={this.props.selectedAsin}
-              />
-            ))}
+            )
+              .slice(0, 15)
+              .map((aBook) => (
+                <SingleBook
+                  key={aBook.asin}
+                  book={aBook}
+                  changeAsin={this.props.changeAsin}
+                  selectedAsin={this.props.selectedAsin}
+                />
+              ))}
           </Row>
         </Container>
       </Col>

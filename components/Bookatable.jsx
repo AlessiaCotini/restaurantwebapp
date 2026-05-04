@@ -25,181 +25,199 @@ class Bookatable extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col>
-            <h3 className="text-center">Prenota una lettura di gruppo!</h3>
-            <Form
-              onSubmit={(e) => {
-                e.preventDefault();
-                //infiliamoci i dati
-                fetch(link, {
-                  method: "POST",
-                  body: JSON.stringify(this.state.prenotazioni),
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                })
-                  .then((res) => {
-                    if (res.ok) {
-                      alert("prenotazione salvata");
+      <Container className="my-5">
+        <Row className="justify-content-center">
+          <Col md={8} lg={6}>
+            <div className="p-4 p-md-5 border-0 shadow-lg rounded-4 bg-white">
+              <h2 className="text-center fw-bold mb-4 text-primary">
+                Prenota una lettura di gruppo
+              </h2>
+              <p className="text-center text-muted mb-5">
+                Compila il modulo per riservare il tuo posto nel circolo.
+              </p>
+
+              <Form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  fetch(link, {
+                    method: "POST",
+                    body: JSON.stringify(this.state.prenotazioni),
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  })
+                    .then((res) => {
+                      if (res.ok) {
+                        alert("Prenotazione salvata con successo!");
+                        this.setState({
+                          prenotazioni: {
+                            name: "",
+                            phone: "",
+                            numberOfPeople: "",
+                            smoking: false,
+                            dateTime: "",
+                            specialRequests: "",
+                          },
+                        });
+                      } else {
+                        throw new Error(res.status);
+                      }
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                }}
+              >
+                <Row>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="small fw-bold text-secondary">
+                        NOME
+                      </Form.Label>
+                      <Form.Control
+                        id="name"
+                        type="text"
+                        placeholder="Il tuo nome"
+                        className="bg-light border-0 py-2"
+                        required
+                        value={this.state.prenotazioni.name}
+                        onChange={(event) => {
+                          this.setState({
+                            prenotazioni: {
+                              ...this.state.prenotazioni,
+                              name: event.target.value,
+                            },
+                          });
+                        }}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="small fw-bold text-secondary">
+                        TELEFONO
+                      </Form.Label>
+                      <Form.Control
+                        id="phone"
+                        type="tel"
+                        placeholder="333 0000000"
+                        className="bg-light border-0 py-2"
+                        required
+                        value={this.state.prenotazioni.phone}
+                        onChange={(event) => {
+                          this.setState({
+                            prenotazioni: {
+                              ...this.state.prenotazioni,
+                              phone: event.target.value,
+                            },
+                          });
+                        }}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="small fw-bold text-secondary">
+                        PARTECIPANTI
+                      </Form.Label>
+                      <Form.Control
+                        id="numberOfPeople"
+                        type="number"
+                        min="1"
+                        max="10"
+                        className="bg-light border-0 py-2"
+                        required
+                        value={this.state.prenotazioni.numberOfPeople}
+                        onChange={(event) => {
+                          this.setState({
+                            prenotazioni: {
+                              ...this.state.prenotazioni,
+                              numberOfPeople: event.target.value,
+                            },
+                          });
+                        }}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label className="small fw-bold text-secondary">
+                        DATA E ORA
+                      </Form.Label>
+                      <Form.Control
+                        id="dateTime"
+                        type="datetime-local"
+                        className="bg-light border-0 py-2"
+                        required
+                        value={this.state.prenotazioni.dateTime}
+                        onChange={(event) => {
+                          this.setState({
+                            prenotazioni: {
+                              ...this.state.prenotazioni,
+                              dateTime: event.target.value,
+                            },
+                          });
+                        }}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Form.Group className="mb-4">
+                  <Form.Label className="small fw-bold text-secondary">
+                    RICHIESTE SPECIALI
+                  </Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    id="specialRequests"
+                    rows={3}
+                    placeholder="Eventuali preferenze o allergie..."
+                    className="bg-light border-0"
+                    value={this.state.prenotazioni.specialRequests}
+                    onChange={(event) => {
                       this.setState({
                         prenotazioni: {
-                          name: "",
-                          phone: "",
-                          numberOfPeople: "",
-                          smoking: false,
-                          dateTime: "",
-                          specialRequests: "",
-                          //riporto il form allo stato iniziale dopo averlo inviato
+                          ...this.state.prenotazioni,
+                          specialRequests: event.target.value,
                         },
                       });
-                    } else {
-                      throw new Error(res.status);
-                    }
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                  });
-              }}
-            >
-              <Form.Group className="mb-3">
-                <Form.Label htmlFor="name">Inserisci il tuo nome</Form.Label>
-                <Form.Control
-                  id="name"
-                  type="text"
-                  placeholder="Nome"
-                  required
-                  value={this.state.prenotazioni.name}
-                  onChange={(event) => {
-                    //funzione chiamata ad ognicarattere inserito all'interno dell'input
-                    //event.target è ciò che inseriamo nell'input
-                    this.setState({
-                      prenotazioni: {
-                        ...this.state.prenotazioni,
-                        name: event.target.value,
-                      },
-                    });
-                  }}
-                />
-              </Form.Group>
+                    }}
+                  />
+                </Form.Group>
 
-              <Form.Group className="mb-3">
-                <Form.Label htmlFor="phone">Inserisci il tuo numero</Form.Label>
-                <Form.Control
-                  id="phone"
-                  type="text"
-                  placeholder="Telefono"
-                  required
-                  value={this.state.prenotazioni.phone}
-                  onChange={(event) => {
-                    //funzione chiamata ad ognicarattere inserito all'interno dell'input
-                    //event.target è ciò che inseriamo nell'input
-                    this.setState({
-                      prenotazioni: {
-                        ...this.state.prenotazioni,
-                        phone: event.target.value,
-                        //i puntini sono lo spread operator per il quale non ci cancella le cose he già ci sono o abbiamo inserito
-                      },
-                    });
-                  }}
-                />
-              </Form.Group>
+                <Form.Group className="mb-4">
+                  <Form.Check
+                    type="switch"
+                    id="custom-switch"
+                    label="Tavolo fumatori"
+                    className="text-muted"
+                    checked={this.state.prenotazioni.smoking}
+                    onChange={(event) => {
+                      this.setState({
+                        prenotazioni: {
+                          ...this.state.prenotazioni,
+                          smoking: event.target.checked,
+                        },
+                      });
+                    }}
+                  />
+                </Form.Group>
 
-              <Form.Group className="mb-3">
-                <Form.Label htmlFor="numberOfPeople">
-                  Inserisci il numero di persone
-                </Form.Label>
-                <Form.Control
-                  id="numberOfPeople"
-                  type="number"
-                  placeholder="Quanti siete?"
-                  min="1"
-                  max="10"
-                  required
-                  value={this.state.prenotazioni.numberOfPeople}
-                  onChange={(event) => {
-                    //funzione chiamata ad ognicarattere inserito all'interno dell'input
-                    //event.target è ciò che inseriamo nell'input
-                    this.setState({
-                      prenotazioni: {
-                        ...this.state.prenotazioni,
-                        numberOfPeople: event.target.value,
-                      },
-                    });
-                  }}
-                />
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Check
-                  type="checkbox"
-                  label="Tavolo fumatori?"
-                  checked={this.state.prenotazioni.smoking}
-                  onChange={(event) => {
-                    //funzione chiamata ad ognicarattere inserito all'interno dell'input
-                    //event.target è ciò che inseriamo nell'input
-                    this.setState({
-                      prenotazioni: {
-                        ...this.state.prenotazioni,
-                        smoking: event.target.checked,
-                        //ritorna un booleano true o false
-                      },
-                    });
-                  }}
-                />
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label htmlFor="dateTime">
-                  Inserisci l'dateTime che preferiresti
-                </Form.Label>
-                <Form.Control
-                  id="dateTime"
-                  type="datetime-local"
-                  placeholder="A che ora vorreste venire"
-                  required
-                  value={this.state.prenotazioni.dateTime}
-                  onChange={(event) => {
-                    //funzione chiamata ad ognicarattere inserito all'interno dell'input
-                    //event.target è ciò che inseriamo nell'input
-                    this.setState({
-                      prenotazioni: {
-                        ...this.state.prenotazioni,
-                        dateTime: event.target.value,
-                      },
-                    });
-                  }}
-                />
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label htmlFor="specialRequests">
-                  Inserisci specialRequests particolari
-                </Form.Label>
-                <Form.Control
-                  id="specialRequests"
-                  type="textarea"
-                  rows="5"
-                  placeholder="specialRequests"
-                  value={this.state.prenotazioni.specialRequests}
-                  onChange={(event) => {
-                    //funzione chiamata ad ognicarattere inserito all'interno dell'input
-                    //event.target è ciò che inseriamo nell'input
-                    this.setState({
-                      prenotazioni: {
-                        ...this.state.prenotazioni,
-                        specialRequests: event.target.value,
-                      },
-                    });
-                  }}
-                />
-              </Form.Group>
-
-              <Button variant="primary" type="submit">
-                Invia richiesta
-              </Button>
-            </Form>
+                <div className="d-grid">
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    className="py-3 fw-bold shadow-sm rounded-pill transition-all"
+                    style={{ letterSpacing: "1px" }}
+                  >
+                    INVIA RICHIESTA
+                  </Button>
+                </div>
+              </Form>
+            </div>
           </Col>
         </Row>
       </Container>

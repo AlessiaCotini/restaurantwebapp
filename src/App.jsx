@@ -11,14 +11,14 @@ import SearchBook from "../components/SearchBook";
 import CommentArea from "../components/CommentArea";
 import { Component } from "react";
 // import Bookatable from "../components/Bookatable";
-// import Backoffice from "../components/Backoffice";
+import Backoffice from "../components/Backoffice";
 
 // import LibAllTheBooks from '../components/LibAllTheBooks'
 // import LibFantasy from "../components/LibFantasy";
 // import LibScify from '../components/LibScify'
 // import LibHistory from '../components/LibHistory'
 // import LibHorror from '../components/LibHorror'
-// import Bookatable from '../components/Bookatable'
+import Bookatable from "../components/Bookatable";
 class App extends Component {
   state = {
     selected: null,
@@ -34,8 +34,6 @@ class App extends Component {
       <div className="d-flex flex-column min-vh-100">
         <header>
           <LibNavbar />
-          {/* <Bookatable /> */}
-          {/* <Backoffice /> */}
         </header>
         <main className="flex-grow-1 m-2">
           <LibWelcome />
@@ -46,6 +44,8 @@ class App extends Component {
               <Container />
             </Row>
           </Container>
+          <Bookatable />
+          <Backoffice />
         </main>
         <footer>
           <LibFooter />
