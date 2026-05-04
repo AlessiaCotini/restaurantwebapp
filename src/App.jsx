@@ -43,6 +43,7 @@ class App extends Component {
             <Row>
               <SearchBook changeAsin={this.getCommentArea} />
               <CommentArea asin={this.state.selected} />
+              <Container />
             </Row>
           </Container>
         </main>

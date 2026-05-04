@@ -53,7 +53,11 @@ class CommentArea extends Component {
       );
     }
     return (
-      <Col xs={6}>
+      <Col
+        xs={6}
+        className="sticky-top align-self-start"
+        style={{ top: "20px", height: "fit-content" }}
+      >
         <Container
           fluid
           className=" mt-1 border border-1 border-dark rounded-2"
