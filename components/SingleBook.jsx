@@ -8,9 +8,9 @@ class SingleBook extends Component {
   };
   render() {
     return (
-      <Col xs={6} md={4} lg={3}>
+      <Col xs={4} md={3}>
         <Card
-          className=" fs-5 text-capitalize text-center text-primary d-flex justify-content-around"
+          className=" fs-5 text-capitalize text-center text-primary d-inline justify-content-around"
           onClick={() => {
             this.setState({
               selected: !this.state.selected,

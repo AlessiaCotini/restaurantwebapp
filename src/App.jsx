@@ -8,8 +8,8 @@ import LibWelcome from "../components/LibWelcome";
 import LibNavbar from "../components/LibNavbar";
 import { Container, Row } from "react-bootstrap";
 import SearchBook from "../components/SearchBook";
-import Bookatable from "../components/Bookatable";
-import Backoffice from "../components/Backoffice";
+// import Bookatable from "../components/Bookatable";
+// import Backoffice from "../components/Backoffice";
 
 // import LibAllTheBooks from '../components/LibAllTheBooks'
 // import LibFantasy from "../components/LibFantasy";
@@ -22,13 +22,13 @@ function App() {
     <div className="d-flex flex-column min-vh-100">
       <header>
         <LibNavbar />
-        <Bookatable />
-        <Backoffice />
+        {/* <Bookatable /> */}
+        {/* <Backoffice /> */}
       </header>
       <main className="flex-grow-1 m-2">
         <LibWelcome />
         <Container fluid>
-          <Row className="d-flex justify-content-around">
+          <Row>
             <SearchBook />
           </Row>
         </Container>
