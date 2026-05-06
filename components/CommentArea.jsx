@@ -1,4 +1,3 @@
-import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CommentList from "./CommentList";
 import AddComment from "./AddComment";
@@ -37,7 +36,7 @@ const CommentArea = function (props) {
     if (props.asin) {
       getComment();
     }
-    //stefanino's help needed
+    //QUI
     // } else {
     //   return (
     //     <Col xs={6}>
@@ -47,6 +46,7 @@ const CommentArea = function (props) {
     //     </Col>
     //   );
     // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.asin]);
   return (
     <Col
