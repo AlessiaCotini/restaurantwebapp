@@ -64,6 +64,7 @@ const CommentArea = function (props) {
             <h5
               className="text-primary fw-bold text-uppercase mb-0"
               style={{ letterSpacing: "1px" }}
+              data-testId="h5"
             >
               Commenti degli utenti
             </h5>

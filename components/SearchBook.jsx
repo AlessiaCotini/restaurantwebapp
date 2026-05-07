@@ -19,7 +19,7 @@ const SearchBook = (props) => {
           <Form.Control
             id="input"
             type="text"
-            placeholder=""
+            placeholder="..."
             required
             value={ricerca}
             onChange={(event) => {

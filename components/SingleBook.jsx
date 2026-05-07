@@ -8,6 +8,7 @@ const SingleBook = ({ book, changeAsin }) => {
   return (
     <Col xs={4} md={3} className="mb-4">
       <Card
+        data-testid="search"
         className={`h-100 shadow-sm border-0 transition-all ${
           selected ? "shadow-lg scale-up" : ""
         }`}
